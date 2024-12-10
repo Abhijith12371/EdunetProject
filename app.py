@@ -4,10 +4,10 @@ from datetime import datetime
 import nltk
 from nltk.chat.util import Chat, reflections
 
-# Download necessary NLTK resources
+
 nltk.download('punkt')
 
-# Define the chatbot pairs with more diverse patterns and responses
+
 chat_pairs = [
     (r'hi|hello|hey', ['Hello! How can I assist you today?', 'Hi there! How can I help?']),
     (r'how are you?', ['I am doing well, thank you! How can I assist you?']),
@@ -49,7 +49,7 @@ def show_about():
         """
     )
 
-# Function to get chatbot response using NLTK
+
 def chatbot_response(user_input):
     return chatbot.respond(user_input)
 
@@ -58,11 +58,11 @@ def export_csv(chat_data):
     df = pd.DataFrame(chat_data, columns=["Timestamp", "User", "Bot"])
     return df.to_csv(index=False).encode("utf-8")
 
-# Streamlit Layout
+
 st.title("Enhanced NLTK-based Chatbot")
 st.subheader("Chat with me below!")
 
-# Sidebar for About Section
+
 show_about()
 
 # Chat Interface
@@ -72,16 +72,15 @@ if user_input:
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     bot_response = chatbot_response(user_input)
 
-    # Append to conversation history
+
     st.session_state["chat_history"].append([timestamp, user_input, bot_response])
 
-# Display Conversation History
 st.markdown("### Conversation History")
 for chat in st.session_state["chat_history"]:
     st.write(f"**You:** {chat[1]}")
     st.write(f"**Bot:** {chat[2]}")
 
-# Export to CSV Button
+
 if st.session_state["chat_history"]:
     st.download_button(
         label="Download Chat History as CSV",
