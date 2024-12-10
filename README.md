@@ -48,5 +48,6 @@ This project is a chatbot built using **Natural Language Processing (NLP)** and 
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository-url>
-   cd Updated_Chatbot_Project
+   git clone https://github.com/Abhijith12371/EdunetProject.git
+
+   cd EdunetProject
